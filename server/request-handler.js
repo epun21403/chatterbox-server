@@ -52,7 +52,11 @@ var requestHandler = function(request, response) {
   headers['Content-Type'] = 'application/json';
 
   if (method === 'GET' && url.includes('/classes/messages')) {
+<<<<<<< HEAD
 
+=======
+    console.log('GET:', dataArray);
+>>>>>>> 60d5728 (Bug fixes)
     statusCode = 200;
     response.writeHead(statusCode, headers);
     response.end(JSON.stringify(dataArray));
@@ -64,13 +68,22 @@ var requestHandler = function(request, response) {
     }).on('end', () => {
       body = Buffer.concat(body).toString();
       body = JSON.parse(body);
+<<<<<<< HEAD
       body.uniqueID = generateUniqueID();
+=======
+      body.message_id = generateUniqueID();
+>>>>>>> 60d5728 (Bug fixes)
       body.createdAt = new Date();
       body.roomname = 'lobby';
       dataArray.push(body);
       response.writeHead(statusCode, headers);
       response.end('Got it!');
+<<<<<<< HEAD
       console.log(dataArray);
+=======
+      // console.log('body:', body);
+      // console.log(dataArray);
+>>>>>>> 60d5728 (Bug fixes)
     });
   } else if (request.method === 'OPTIONS' && url.includes('/classes/messages')) {
     statusCode = 200;
