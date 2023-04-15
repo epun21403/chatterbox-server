@@ -63,13 +63,13 @@ var requestHandler = function(request, response) {
     }).on('end', () => {
       body = Buffer.concat(body).toString();
       body = JSON.parse(body);
-      body.uniqueID = generateUniqueID();
+      body.message_id = generateUniqueID();
       body.createdAt = new Date();
       body.roomname = 'lobby';
       dataArray.push(body);
       response.writeHead(statusCode, headers);
       response.end('Got it!');
-      console.log(dataArray);
+
     });
   } else if (request.method === 'OPTIONS' && url.includes('/classes/messages')) {
     statusCode = 200;
